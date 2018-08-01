@@ -1,0 +1,16 @@
+#!/bin/bash
+if [[ -z $1 && -z $2 ]] ; then
+	echo "$0 $1 $2 --- branch name was required"
+	exit 1
+elif [[ ! `git branch` = *"$2"* ]] ; then
+	echo "$2 does not exist"
+	exit 2
+fi
+
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+git checkout $2
+git fetch
+git merge $1
+if [[ $? -eq 0 ]] ; then
+	git checkout $CURRENT_BRANCH
+fi

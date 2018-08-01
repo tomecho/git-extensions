@@ -1,0 +1,2 @@
+#!/bin/bash
+git branch --merged | egrep -v '\*|master|develop' | xargs --no-run-if-empty git branch -d
