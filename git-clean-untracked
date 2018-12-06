@@ -1,5 +1,0 @@
-#!/bin/bash
-JUNK_FILES=`git ls-files . --exclude-standard --others`
-for junk in $JUNK_FILES ; do
-	rm $junk
-done
